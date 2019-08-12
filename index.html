@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>DRI Calculator</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+
+<body style="padding: 20px">
+    <h1 class="title">DRI Calculator</h1>
+    <div class="tabContainer">
+        <div class="buttonContainer">
+            <button onclick="showPanel(0,'red')">Calculate HFOV</button>
+            <button onclick="showPanel(1,'green')">Calculate Focal Length</button>
+            <button onclick="showPanel(2,'yellow')">Settings</button>
+        </div>
+
+        <div class="tabPanel">
+            <div class="calculateHFOV">
+                <div class="dataContainer">
+                    <div class="input">input</div>
+                    <div class="fov">fov</div>
+                    <div class="natoTarget">natoTarget</div>
+                    <div class="humanTarget">humanTarget</div>
+                    <div class="objectTarget">objectTarget</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="tabPanel">
+            <div class="calculateFocalLength">
+                <div class="dataContainer">
+                    <div class="input">input</div>
+                    <div class="fov">fov</div>
+                    <div class="natoTarget">natoTarget</div>
+                    <div class="humanTarget">humanTarget</div>
+                    <div class="objectTarget">objectTarget</div>
+                </div>
+            </div>
+        </div>
+        <div class="tabPanel">
+            <div class="settings">
+                <div class="dataContainer">
+                    <div class="parameters">parameters</div>
+                    <div class="linePairs">linePairs</div>
+                    <div class="targetSize">targetSize</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
