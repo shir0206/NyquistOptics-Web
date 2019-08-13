@@ -9,9 +9,6 @@ function showPanel(currentButton, panelIndex) {
         lastButton.style.color = "";
     }
 
-
-    navigator.vibrate(3);
-
     lastButton = currentButton;
     lastButton.style.color = "black";
     lastButton.style.backgroundColor = "#dce6f2";
@@ -21,6 +18,8 @@ function showPanel(currentButton, panelIndex) {
     }
     lastPanel = tabPanels[panelIndex];
     lastPanel.style.display = "block";
+
+    navigator.vibrate(3);
 }
 
 showPanel(tabButtons[0], 0);

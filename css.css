@@ -48,7 +48,7 @@
     font-size: 25px;
     height: 100%;
     width: 100%;
-    padding: 20px;
+    padding: 8px;
     text-align: center;
     background: #ffffff;
     box-sizing: border-box;
@@ -104,8 +104,8 @@
 }
 
 .infoContainer {
-    margin: 20px;
-    padding: 5px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     background: #dce6f2;
