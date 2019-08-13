@@ -16,35 +16,43 @@
             <button onclick="showPanel(2,'yellow')">Settings</button>
         </div>
 
-        <div class="tabPanel">
-            <div class="calculateHFOV">
-                <div class="dataContainer">
-                    <div class="input">input</div>
-                    <div class="fov">fov</div>
-                    <div class="natoTarget">natoTarget</div>
-                    <div class="humanTarget">humanTarget</div>
-                    <div class="objectTarget">objectTarget</div>
-                </div>
+        <div class="tabContainer">
+            <div class="buttonContainer">
+                <button onclick="showPanel(this,'red', 0)" style="">Calculate HFOV</button>
+                <button onclick="showPanel(this,'green', 1)" style="">Calculate Focal Length</button>
+                <button onclick="showPanel(this,'yellow', 2)" style="">Settings</button>
             </div>
 
-        </div>
-        <div class="tabPanel">
-            <div class="calculateFocalLength">
-                <div class="dataContainer">
-                    <div class="input">input</div>
-                    <div class="fov">fov</div>
-                    <div class="natoTarget">natoTarget</div>
-                    <div class="humanTarget">humanTarget</div>
-                    <div class="objectTarget">objectTarget</div>
+            <div class="tabPanel" style="display: none; background-color: red;">
+                <div class="calculateHFOV">
+                    <div class="dataContainer">
+                        <div class="input">input</div>
+                        <div class="fov">fov</div>
+                        <div class="natoTarget">natoTarget</div>
+                        <div class="humanTarget">humanTarget</div>
+                        <div class="objectTarget">objectTarget</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tabPanel" style="display: none; background-color: green;">
+                <div class="calculateFocalLength">
+                    <div class="dataContainer">
+                        <div class="input">input</div>
+                        <div class="fov">fov</div>
+                        <div class="natoTarget">natoTarget</div>
+                        <div class="humanTarget">humanTarget</div>
+                        <div class="objectTarget">objectTarget</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="tabPanel">
-            <div class="settings">
-                <div class="dataContainer">
-                    <div class="parameters">parameters</div>
-                    <div class="linePairs">linePairs</div>
-                    <div class="targetSize">targetSize</div>
+            <div class="tabPanel" style="display: block; background-color: yellow;">
+                <div class="settings">
+                    <div class="dataContainer">
+                        <div class="parameters">parameters</div>
+                        <div class="linePairs">linePairs</div>
+                        <div class="targetSize">targetSize</div>
+                    </div>
                 </div>
             </div>
         </div>

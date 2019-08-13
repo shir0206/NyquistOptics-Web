@@ -1,20 +1,24 @@
-var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");
-var tabPanels=document.querySelectorAll(".tabContainer .tabPanel");
+var tabButtons = document.querySelectorAll(".tabContainer .buttonContainer button");
+var tabPanels = document.querySelectorAll(".tabContainer .tabPanel");
 
-function showPanel(panelIndex,colorCode){
-    tabButtons.forEach(function(node){
-        node.style.backgroundColor="";
-        node.style.color="";
-    });
+var lastPanel, lastButton;
 
-    tabButtons[panelIndex].style.backgroundColor=colorCode;
-    tabButtons[panelIndex].style.color="white";
+function showPanel(currentButton, colorCode, panelIndex) {
+    if (lastButton) {
+        lastButton.style.backgroundColor = "";
+        lastButton.style.color = "";
+    }
 
-    tabPanels.forEach(function(node){
-        node.style.display="none";
-    });
-    tabPanels[panelIndex].style.display="block";
-    tabPanels[panelIndex].style.backgroundColor=colorCode;
+    lastButton = currentButton;
+    lastButton.style.backgroundColor = colorCode;
+    lastButton.style.color = "white";
+
+    if (lastPanel) {
+        lastPanel.style.display = "none";
+    }
+    lastPanel = tabPanels[panelIndex];
+    lastPanel.style.display = "block";
+    lastPanel.style.backgroundColor = colorCode;
 }
 
-showPanel(0,'red');
+showPanel(tabButtons[0], 'red', 0);
