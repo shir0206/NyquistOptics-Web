@@ -26,9 +26,10 @@
     background-color: bisque;
 }
 
-.tabContainer .buttonContainer button:hover {
+
+/* .tabContainer .buttonContainer button:hover {
     background-color: rosybrown;
-}
+} */
 
 .tabContainer .tabPanel {
     height: 85%;
