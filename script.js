@@ -19,7 +19,7 @@ function showPanel(currentButton, panelIndex) {
     lastPanel = tabPanels[panelIndex];
     lastPanel.style.display = "block";
 
-    navigator.vibrate(50);
+    navigator.vibrate(100);
 }
 
 showPanel(tabButtons[0], 0);
