@@ -10,7 +10,7 @@ function showPanel(currentButton, panelIndex) {
     }
 
 
-    navigator.vibrate(1000);
+    navigator.vibrate(100);
 
     lastButton = currentButton;
     lastButton.style.color = "black";
