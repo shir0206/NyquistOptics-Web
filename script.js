@@ -3,22 +3,21 @@ var tabPanels = document.querySelectorAll(".tabContainer .tabPanel");
 
 var lastPanel, lastButton;
 
-function showPanel(currentButton, colorCode, panelIndex) {
+function showPanel(currentButton, panelIndex) {
     if (lastButton) {
         lastButton.style.backgroundColor = "";
         lastButton.style.color = "";
     }
 
     lastButton = currentButton;
-    lastButton.style.backgroundColor = colorCode;
-    lastButton.style.color = "white";
+    lastButton.style.color = "black";
+    lastButton.style.backgroundColor = "#dce6f2";
 
     if (lastPanel) {
         lastPanel.style.display = "none";
     }
     lastPanel = tabPanels[panelIndex];
     lastPanel.style.display = "block";
-    lastPanel.style.backgroundColor = colorCode;
 }
 
-showPanel(tabButtons[0], 'red', 0);
+showPanel(tabButtons[0], 0);

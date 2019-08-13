@@ -1,6 +1,6 @@
 .title {
     font-family: sans-serif;
-    color: blueviolet;
+    color: #17375e;
     text-align: center;
 }
 
@@ -22,8 +22,8 @@
     cursor: pointer;
     padding: 10px;
     font-family: sans-serif;
-    font-size: 15px;
-    background-color: bisque;
+    font-size: 25px;
+    background-color: #b9cde5;
 }
 
 
@@ -33,19 +33,19 @@
 
 .tabContainer .tabPanel {
     height: 85%;
-    background-color: aquamarine;
+    background-color: #dce6f2;
     color: black;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
     box-sizing: border-box;
     font-family: sans-serif;
-    font-size: 22px;
+    font-size: 25px;
     display: none;
 }
 
 .dataContainer {
-    font-size: 40px;
+    font-size: 25px;
     height: 100%;
     width: 100%;
     padding: 20px;
@@ -53,7 +53,7 @@
     background: #ffffff;
     box-sizing: border-box;
     font-family: sans-serif;
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-template-columns: auto-fit, minmax(60px, 1fr);
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 10px;
 }
