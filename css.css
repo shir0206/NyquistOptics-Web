@@ -46,10 +46,11 @@
 
 .dataContainer {
     font-size: 40px;
-    height: 85%;
+    height: 100%;
     width: 100%;
+    padding: 20px;
     text-align: center;
-    background: Silver;
+    background: #ffffff;
     box-sizing: border-box;
     font-family: sans-serif;
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
@@ -60,53 +61,54 @@
 .calculateHFOV .input {
     margin: 10px;
     padding: 10px;
-    background: LightSkyBlue;
 }
 
 .calculateFocalLength .input {
     margin: 10px;
     padding: 10px;
-    background: lemonchiffon;
 }
 
 .fov {
     padding: 10px;
     margin: 10px;
-    background: LightSalmon;
 }
 
 .natoTarget {
     margin: 10px;
     padding: 10px;
-    background: PaleTurquoise;
 }
 
 .humanTarget {
     margin: 10px;
     padding: 10px;
-    background: LightPink;
 }
 
 .objectTarget {
     margin: 10px;
     padding: 10px;
-    background: PaleGreen;
 }
 
 .settings .parameters {
     margin: 10px;
     padding: 10px;
-    background: PaleTurquoise;
 }
 
 .settings .linePairs {
     margin: 10px;
     padding: 10px;
-    background: LightPink;
 }
 
 .settings .targetSize {
     margin: 10px;
     padding: 10px;
-    background: PaleGreen;
+}
+
+.infoContainer {
+    margin: 20px;
+    padding: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    background: #dce6f2;
+    border: 1px solid #000000;
+    border-radius: 10px;
 }
