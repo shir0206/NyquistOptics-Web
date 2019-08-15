@@ -1,5 +1,8 @@
-.title {
+body {
     font-family: sans-serif;
+}
+
+.title {
     color: #17375e;
     text-align: center;
 }
@@ -23,7 +26,7 @@
     padding: 10px;
     font-family: sans-serif;
     font-size: 1em;
-    background-color: #b9cde5;
+    background-color: #aac0e8;
 }
 
 .tabContainer .tabPanel {
@@ -170,11 +173,14 @@ input[type=number] {
     position: fixed;
     bottom: 3em;
     right: 3em;
-    background-image: radial-gradient(#aac0e8, #b9cde5, #dce6f2), url('/img/calculator.svg');
+    background-image: url(img/calculator.svg), radial-gradient(#aac0e8, #b9cde5, #dce6f2);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 60%, 100%;
+    background-position: center, center;
     border-radius: 50px;
     box-shadow: 2px 2px 3px #999;
     outline: none;
-    border: #17375e;
+    border: 1px solid #000000;
 }
 
 .my-float {
@@ -185,9 +191,7 @@ input[type=number] {
 /* ------------------------------------- */
 
 output {
-    border-bottom: 1px solid #000000;
     margin: 3em 0% 3em 0%;
-    color: aquamarine;
     background: transparent;
     text-align: center;
 }
@@ -195,4 +199,26 @@ output {
 form {
     padding: 0.5em;
     background: #ffffff
+}
+
+#inputParameters {
+    background: #aac0e8;
+}
+
+label {
+    font-weight: bold;
+}
+
+
+/* #iconNatoDetection {
+    background: url(img\nato.svg);
+    filter: blur(7px);
+    -webkit-filter: blur(1px);
+} */
+
+#iconNatoDetection::after {
+    -webkit-backdrop-filter: blur(50px);
+    /* Use for Safari 9+, Edge 17+ (not a mistake) and iOS Safari 9.2+ */
+    backdrop-filter: blur(50px);
+    /* Supported in Chrome 76 */
 }

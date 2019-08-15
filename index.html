@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
     <div class="tabContainer">
         <div class="buttonContainer">
             <button onclick="showPanel(this, 0)" style="">Calculate HFOV</button>
@@ -18,33 +17,33 @@
 
         <div class="tabPanel" style="display: none;">
 
-            <button onclick="calc(this)" class="calc" src="/img/calculator.svg"></button>
+            <button onclick="calcHFOV()" class="calc"></button>
 
 
             <div id="calculateHFOV" class="dataContainer">
 
                 <form>
 
-                    <!-- <div id="inputParameters" class="dataContainer"> -->
+                    <!--inputParametersForCalculationHFOV------------------------------------------------------------------------>
 
                     <div id="inputParameters" class="infoContainer">
                         <div class="infoTitle">
                             <img id="imgCalculateHFOV" src="img\inputParameters.svg" alt="calculate HFOV">
-                            <label id="labelCalculateHFOV">calculateHFOV</label>
+                            <label id="labelCalculateHFOV">Calculate HFOV & DRI</label>
                         </div>
 
                         <div class="parameterContainer">
 
                             <div id="focalLength" class="parameterLine">
                                 <img id="iconFocalLength" src="img\focalLength.svg" alt="Focal Length">
-                                <label id="labelFocalLength" for="inputFocalLength">Focal Length (mm)</label>
+                                <label id="labelFocalLength" for="inputFocalLength">Focal Length (mm):</label>
                                 <input id="inputFocalLength" type="number" value="">
                             </div>
                         </div>
                         <div class="parameterContainer">
                             <div id="sensorPitch" class="parameterLine">
                                 <img id="iconSensorPitch" src="img\sensorPitch.svg" alt="Sensor Pitch">
-                                <label id="labelSensorPitch" for="inputSensorPitch">Sensor Pitch (mic)</label>
+                                <label id="labelSensorPitch" for="inputSensorPitch">Sensor Pitch (mic):</label>
                                 <input id="inputSensorPitch" type="number" value="17">
                             </div>
                         </div>
@@ -52,7 +51,7 @@
                         <div class="parameterContainer">
                             <div id="sensorSize" class="parameterLine">
                                 <img id="iconSensorSize" src="img\sensorSize.svg" alt="Sensor Size">
-                                <label id="labelSensorSize" for="inputSensorSize">Sensor Size (px)</label>
+                                <label id="labelSensorSize" for="inputSensorSize">Sensor Size (px):</label>
                                 <input id="inputSensorSizeW" placeholder="Width" type="number" value="640">
                                 <label id="labelSensorSizeX" for="inputSensorSize"> x </label>
                                 <input id="inputSensorSizeH" placeholder="Height" type="number" value="480">
@@ -71,7 +70,7 @@
                         <div class="parameterContainer">
                             <div id="HFOV" class="parameterLine">
                                 <img id="iconHFOV" src="img\HFOV.svg" alt="HFOV">
-                                <label id="labelHFOV" for="inputHFOV">HFOV</label>
+                                <label id="labelHFOV" for="inputHFOV">HFOV: </label>
                                 <output id="inputHFOV" name="outputParameter">33</output>
 
                             </div>
@@ -80,7 +79,7 @@
                         <div class="parameterContainer">
                             <div id="VFOV" class="parameterLine">
                                 <img id="iconVFOV" src="img\VFOV.svg" alt="VFOV">
-                                <label id="labelVFOV" for="inputVFOV">VFOV</label>
+                                <label id="labelVFOV" for="inputVFOV">VFOV: </label>
                                 <output id="inputVFOV">33</output>
                             </div>
                         </div>
@@ -88,7 +87,7 @@
                         <div class="parameterContainer">
                             <div id="IFOV" class="parameterLine">
                                 <img id="iconIFOV" src="img\IFOV.svg" alt="IFOV">
-                                <label id="labelIFOV" for="inputIFOV">IFOV</label>
+                                <label id="labelIFOV" for="inputIFOV">IFOV: </label>
                                 <output id="inputIFOV">33</output>
                             </div>
                         </div>
@@ -96,10 +95,39 @@
 
 
 
+
                     <!--natoTarget------------------------------------------------------------------------->
 
                     <div id="natoTarget" class="infoContainer">
-                        natoTarget - calculateHFOV
+                        <div class="infoTitle">
+                            <img id="imgNatoTarget" src="img\nato.svg" alt="Nato Target">
+                            <label id="labelNatoTarget">NatoTarget</label>
+                            <label id="labelNatoTargetSize">(2.3 x 2.3)</label>
+                        </div>
+                        <div class="parameterContainer">
+                            <div id="natoDetection" class="parameterLine">
+                                <img id="iconNatoDetection" class="svgBlur" src="img\nato.svg" alt="Nato Detection">
+                                <label id="labelNatoDetection" for="inputDetection">Detection: </label>
+                                <output id="inputNatoDetection" name="outputParameter">33</output>
+
+                            </div>
+                        </div>
+
+                        <div class="parameterContainer">
+                            <div id="natoRecognition" class="parameterLine">
+                                <img id="iconNatoRecognition" src="img\nato.svg" alt="Nato Recognition">
+                                <label id="labelNatoRecognition" for="inputRecognition">Recognition: </label>
+                                <output id="inputNatoRecognition">33</output>
+                            </div>
+                        </div>
+
+                        <div class="parameterContainer">
+                            <div id="natoIdentification" class="parameterLine">
+                                <img id="iconNatoIdentification" src="img\nato.svg" alt="Nato Identification">
+                                <label id="labeNatolIdentification" for="inputNatoIdentification">Identification: </label>
+                                <output id="inputNatoIdentification">33</output>
+                            </div>
+                        </div>
                     </div>
                     <!--humanTarget------------------------------------------------------------------------>
 
