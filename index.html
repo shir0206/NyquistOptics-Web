@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <div class="tabContainer">
         <div class="buttonContainer">
             <button onclick="showPanel(this, 0)" style="">Calculate HFOV</button>
@@ -16,31 +17,105 @@
         </div>
 
         <div class="tabPanel" style="display: none;">
-            <div class="calculateHFOV">
-                <div class="dataContainer">
 
-                    <div class="infoContainer">
-                        <div class="input">input - calculateHFOV</div>
+            <button onclick="calc(this)" class="calc" src="/img/calculator.svg"></button>
+
+
+            <div id="calculateHFOV" class="dataContainer">
+
+                <form>
+
+                    <!-- <div id="inputParameters" class="dataContainer"> -->
+
+                    <div id="inputParameters" class="infoContainer">
+                        <div class="infoTitle">
+                            <img id="imgCalculateHFOV" src="img\inputParameters.svg" alt="calculate HFOV">
+                            <label id="labelCalculateHFOV">calculateHFOV</label>
+                        </div>
+
+                        <div class="parameterContainer">
+
+                            <div id="focalLength" class="parameterLine">
+                                <img id="iconFocalLength" src="img\focalLength.svg" alt="Focal Length">
+                                <label id="labelFocalLength" for="inputFocalLength">Focal Length (mm)</label>
+                                <input id="inputFocalLength" type="number" value="">
+                            </div>
+                        </div>
+                        <div class="parameterContainer">
+                            <div id="sensorPitch" class="parameterLine">
+                                <img id="iconSensorPitch" src="img\sensorPitch.svg" alt="Sensor Pitch">
+                                <label id="labelSensorPitch" for="inputSensorPitch">Sensor Pitch (mic)</label>
+                                <input id="inputSensorPitch" type="number" value="17">
+                            </div>
+                        </div>
+
+                        <div class="parameterContainer">
+                            <div id="sensorSize" class="parameterLine">
+                                <img id="iconSensorSize" src="img\sensorSize.svg" alt="Sensor Size">
+                                <label id="labelSensorSize" for="inputSensorSize">Sensor Size (px)</label>
+                                <input id="inputSensorSizeW" placeholder="Width" type="number" value="640">
+                                <label id="labelSensorSizeX" for="inputSensorSize"> x </label>
+                                <input id="inputSensorSizeH" placeholder="Height" type="number" value="480">
+                            </div>
+                        </div>
                     </div>
-                    <div class="infoContainer">
-                        <div class="fov">fov - calculateHFOV</div>
+                    <!-- </div> -->
+
+                    <!--fov------------------------------------------------------------------------>
+
+                    <div id="fov" class="infoContainer">
+                        <div class="infoTitle">
+                            <img id="imgFOV" src="img\FOV.svg" alt="Field of View">
+                            <label id="labelFOV">Field of View</label>
+                        </div>
+                        <div class="parameterContainer">
+                            <div id="HFOV" class="parameterLine">
+                                <img id="iconHFOV" src="img\HFOV.svg" alt="HFOV">
+                                <label id="labelHFOV" for="inputHFOV">HFOV</label>
+                                <output id="inputHFOV" name="outputParameter">33</output>
+
+                            </div>
+                        </div>
+
+                        <div class="parameterContainer">
+                            <div id="VFOV" class="parameterLine">
+                                <img id="iconVFOV" src="img\VFOV.svg" alt="VFOV">
+                                <label id="labelVFOV" for="inputVFOV">VFOV</label>
+                                <output id="inputVFOV">33</output>
+                            </div>
+                        </div>
+
+                        <div class="parameterContainer">
+                            <div id="IFOV" class="parameterLine">
+                                <img id="iconIFOV" src="img\IFOV.svg" alt="IFOV">
+                                <label id="labelIFOV" for="inputIFOV">IFOV</label>
+                                <output id="inputIFOV">33</output>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="infoContainer">
-                        <div class="natoTarget">natoTarget - calculateHFOV</div>
-                    </div>
 
-                    <div class="infoContainer">
-                        <div class="humanTarget">humanTarget - calculateHFOV</div>
-                    </div>
 
-                    <div class="infoContainer">
-                        <div class="objectTarget">objectTarget - calculateHFOV</div>
+                    <!--natoTarget------------------------------------------------------------------------->
+
+                    <div id="natoTarget" class="infoContainer">
+                        natoTarget - calculateHFOV
                     </div>
-                </div>
+                    <!--humanTarget------------------------------------------------------------------------>
+
+                    <div id="humanTarget" class="infoContainer">
+                        humanTarget - calculateHFOV
+                    </div>
+                    <!--objectTarget------------------------------------------------------------------------>
+
+                    <div id="objectTarget" class="infoContainer">
+                        objectTarget - calculateHFOV
+                    </div>
+                </form>
             </div>
-
         </div>
+
+
         <div class="tabPanel" style="display: none;">
             <div class="calculateFocalLength">
                 <div class="dataContainer">
@@ -78,8 +153,10 @@
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
+    </div>
+    </div>
     <script src="script.js"></script>
 </body>
 

@@ -26,18 +26,11 @@
     background-color: #b9cde5;
 }
 
-
-/* .tabContainer .buttonContainer button:hover {
-    background-color: rosybrown;
-} */
-
 .tabContainer .tabPanel {
+    border-top: 0.5em solid #dce6f2;
     height: 85%;
-    background-color: #dce6f2;
     color: black;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
     box-sizing: border-box;
     font-family: sans-serif;
     display: none;
@@ -57,13 +50,11 @@
     grid-gap: 10px;
 }
 
-.calculateHFOV .input {
-    margin: 10px;
+#inputParameters {
     padding: 10px;
 }
 
-.calculateFocalLength .input {
-    margin: 10px;
+#inputParameters {
     padding: 10px;
 }
 
@@ -103,11 +94,105 @@
 }
 
 .infoContainer {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     background: #dce6f2;
     border: 1px solid #000000;
     border-radius: 10px;
+}
+
+.infoTitle {
+    text-align: left;
+    margin-bottom: 1em;
+}
+
+.parameterContainer {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+img {
+    width: 1.2em;
+    height: 1.2em;
+    padding: 0.3em;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    background-image: radial-gradient(#aac0e8, #b9cde5, #dce6f2);
+    margin: 0%;
+}
+
+input[type=number] {
+    border: none;
+    border-bottom: 1px solid #000000;
+    background: transparent;
+    width: 3em;
+    text-align: center;
+}
+
+
+/* label underline focus color */
+
+input[type=number]:focus {
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid #aac0e8;
+    box-shadow: 0 0.5px 0 0 #aac0e8;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
+.parameterLine {
+    padding: 0.5em;
+}
+
+.calc {
+    width: 4em;
+    height: 4em;
+    padding: 0.3em;
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    background-image: radial-gradient(#aac0e8, #b9cde5, #dce6f2), url('/img/calculator.svg');
+    border-radius: 50px;
+    box-shadow: 2px 2px 3px #999;
+    outline: none;
+    border: #17375e;
+}
+
+.my-float {
+    margin-top: 22px;
+}
+
+
+/* ------------------------------------- */
+
+output {
+    border-bottom: 1px solid #000000;
+    margin: 3em 0% 3em 0%;
+    color: aquamarine;
+    background: transparent;
+    text-align: center;
+}
+
+form {
+    padding: 0.5em;
+    background: #ffffff
 }
