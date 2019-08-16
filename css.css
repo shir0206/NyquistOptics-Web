@@ -204,14 +204,26 @@ input[type=number] {
     border: 1px solid #000000;
 }
 
-.calc {}
+.save {
+    width: 4em;
+    height: 4em;
+    padding: 0.3em;
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    background-image: url(img/save.svg), radial-gradient(#aac0e8, #b9cde5, #dce6f2);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50%, 100%;
+    background-position: center, center;
+    border-radius: 50px;
+    box-shadow: 2px 2px 3px #999;
+    outline: none;
+    border: 1px solid #000000;
+}
 
 .my-float {
     margin-top: 22px;
 }
-
-
-/* ------------------------------------- */
 
 output {
     margin: 3em 0% 3em 0%;
@@ -224,24 +236,12 @@ form {
     background: #ffffff
 }
 
-#inputParameters {
+#inputParameters,
+#LinePairs,
+#targetSize {
     background: #aac0e8;
 }
 
 label {
     font-weight: bold;
-}
-
-
-/* #iconNatoDetection {
-    background: url(img\nato.svg);
-    filter: blur(7px);
-    -webkit-filter: blur(1px);
-} */
-
-#iconNatoDetection::after {
-    -webkit-backdrop-filter: blur(50px);
-    /* Use for Safari 9+, Edge 17+ (not a mistake) and iOS Safari 9.2+ */
-    backdrop-filter: blur(50px);
-    /* Supported in Chrome 76 */
 }

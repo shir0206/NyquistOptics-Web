@@ -30,5 +30,19 @@ function calcHFOV() {
 
 }
 
+function calcFocalLength() {
+
+    navigator.vibrate(100);
+
+}
+
+function saveSettings() {
+
+    navigator.vibrate(100);
+
+}
+
+
+
 
 showPanel(tabButtons[0], 0);
