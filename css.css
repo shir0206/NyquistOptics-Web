@@ -132,6 +132,27 @@ img {
     margin: 0%;
 }
 
+.parameterContainer .fullBlurContainer,
+.parameterContainer .halfBlurContainer {
+    display: inline-block;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    width: 29.4px;
+    height: 29.4px;
+    filter: blur(100);
+    overflow: hidden;
+}
+
+.parameterContainer .fullBlurContainer img {
+    border: 1px solid #aac0e8;
+    filter: blur(2px);
+}
+
+.parameterContainer .halfBlurContainer img {
+    border: 1px solid #aac0e8;
+    filter: blur(1px);
+}
+
 input[type=number] {
     border: none;
     border-bottom: 1px solid #000000;
@@ -182,6 +203,8 @@ input[type=number] {
     outline: none;
     border: 1px solid #000000;
 }
+
+.calc {}
 
 .my-float {
     margin-top: 22px;
