@@ -24,9 +24,9 @@
 
             <div id="calculateHFOV" class="dataContainer">
 
-                <button id="calcHFOV" onclick="calcHFOV()" class="calc"></button>
+                <button id="calcHFOVTab" onclick="calcHFOVTab()" class="calc"></button>
 
-                <form>
+                <form name="calculateHFOVForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
 
                     <!--inputParametersForCalculationHFOV------------------------------------------------------------------------>
 
@@ -41,7 +41,7 @@
                             <div id="focalLength" class="parameterLine">
                                 <img id="iconFocalLength" src="img\focalLength.svg" alt="Focal Length">
                                 <label id="labelFocalLength" for="inputFocalLength">Focal Length (mm):</label>
-                                <input id="inputFocalLength" type="number" value="">
+                                <input id="inputFocalLength" name="valueFocalLength" type="number" value="">
                             </div>
                         </div>
                         <div class="parameterContainer">
@@ -226,9 +226,9 @@
 
             <div id="calculateFocalLength" class="dataContainer">
 
-                <button id="calcFocalLength" onclick="calcFocalLength()" class="calc"></button>
+                <button id="calcFocalLengthTab" onclick="calcFocalLength()" class="calc"></button>
 
-                <form>
+                <form name="calculateFocalLengthForm">
 
                     <!--inputParametersForFocalLength------------------------------------------------------------------------>
 
