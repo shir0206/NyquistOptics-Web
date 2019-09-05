@@ -5,15 +5,18 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>DRI Calculator</title>
     <link rel="stylesheet" type="text/css" href="css.css">
+
+    <script src="script.js"></script>
+    <script src="calculateFOV.js"></script>
 </head>
 
 <body>
 
     <div class="tabContainer">
         <div class="buttonContainer">
-            <button onclick="showPanel(this, 0)" style="">Calculate HFOV</button>
-            <button onclick="showPanel(this, 1)" style="">Calculate Focal Length</button>
-            <button onclick="showPanel(this, 2)" style="">Settings</button>
+            <button onclick="showPanel(this, 0)">Calculate HFOV</button>
+            <button onclick="showPanel(this, 1)">Calculate Focal Length</button>
+            <button onclick="showPanel(this, 2)">Settings</button>
         </div>
 
         <div class="tabPanel" style="display: none;">
@@ -75,7 +78,7 @@
                             <div id="HFOV" class="parameterLine">
                                 <img id="iconHFOV" src="img\HFOV.svg" alt="HFOV">
                                 <label id="labelHFOV" for="inputHFOV">HFOV: </label>
-                                <output id="inputHFOV" name="outputParameter">1234</output>
+                                <output id="outputHFOV" name="outputParameter">1234</output>
 
                             </div>
                         </div>
@@ -84,7 +87,7 @@
                             <div id="VFOV" class="parameterLine">
                                 <img id="iconVFOV" src="img\VFOV.svg" alt="VFOV">
                                 <label id="labelVFOV" for="inputVFOV">VFOV: </label>
-                                <output id="inputVFOV">1234</output>
+                                <output id="outputVFOV">1234</output>
                             </div>
                         </div>
 
@@ -92,7 +95,7 @@
                             <div id="IFOV" class="parameterLine">
                                 <img id="iconIFOV" src="img\IFOV.svg" alt="IFOV">
                                 <label id="labelIFOV" for="inputIFOV">IFOV: </label>
-                                <output id="inputIFOV">1234</output>
+                                <output id="outputIFOV">1234</output>
                             </div>
                         </div>
                     </div>
@@ -520,7 +523,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 
 </html>
