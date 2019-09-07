@@ -4,10 +4,15 @@ var fs = require("fs");
 
 app.use('/', express.static(__dirname + '/'));
 
+
+//===================================== Get calculated results from server =====================================
+
+//------------------------------------- Calculate FOV -------------------------------------
+
 /**
- * Calculate in the server sum of two numbers
+ * Calculate in the server hfov results map
  */
-app.get('/fov', function(req, res) {
+app.get('/calcHfov', function(req, res) {
 
     // Recieve parameters from the query
     var focalLength = req.query.focalLength;
@@ -16,14 +21,15 @@ app.get('/fov', function(req, res) {
     var sensorSizetHeight = req.query.sensorSizetHeight;
 
     // Calculate HFOV
-    hfov = calculateHFOV(parseInt(sensorPitch), parseInt(sensorSizetWidth), parseInt(focalLength))
+    hfov = calcHFOV(parseInt(sensorPitch), parseInt(sensorSizetWidth), parseInt(focalLength))
 
     // Calculate VFOV
-    vfov = calculateVFOV(hfov, parseInt(sensorSizetHeight), parseInt(sensorSizetWidth))
+    vfov = calcVFOV(hfov, parseInt(sensorSizetHeight), parseInt(sensorSizetWidth))
 
     // Calculate IFOV
-    ifov = calculateIFOV(parseInt(sensorPitch), parseInt(focalLength))
+    ifov = calcIFOV(parseInt(sensorPitch), parseInt(focalLength))
 
+    // Create map result
     var fovMap = new Map();
     fovMap.set("hfov", hfov);
     fovMap.set("vfov", vfov);
@@ -35,18 +41,159 @@ app.get('/fov', function(req, res) {
 
 })
 
+/**
+ * Calculate in the server focal length results map
+ */
+app.get('/calcFocalLength', function(req, res) {
 
-function calculateHFOV(sensorPitch, sensorSizetWidth, focalLength) {
+    // Recieve parameters from the query
+    var hfov = req.query.hfov;
+    var sensorPitch = req.query.sensorPitch;
+    var sensorSizetWidth = req.query.sensorSizetWidth;
+    var sensorSizetHeight = req.query.sensorSizetHeight;
+
+    // Calculate focal length
+    focalLength = calcFocalLength(parseInt(sensorPitch), parseInt(sensorSizetWidth), parseInt(hfov))
+
+    // Calculate VFOV
+    vfov = calcVFOV(hfov, parseInt(sensorSizetHeight), parseInt(sensorSizetWidth))
+
+    // Calculate IFOV
+    ifov = calcIFOV(parseInt(sensorPitch), parseInt(focalLength))
+
+    // Create map result
+    var fovMap = new Map();
+    fovMap.set("focalLength", focalLength);
+    fovMap.set("vfov", vfov);
+    fovMap.set("ifov", ifov);
+
+    // Return result
+    console.log(fovMap);
+    res.end(String(fovMap));
+
+})
+
+//------------------------------------- Calculate DRI -------------------------------------
+
+
+
+
+
+
+
+
+
+//===================================== Helper functions for calculations =====================================
+
+//------------------------------------- Calculate FOV -------------------------------------
+
+/**
+ * Method that returns the calculated value of hfov.
+ * @param {*} sensorPitch = The user input value of sensor pitch.
+ * @param {*} sensorSizetWidth = The user input value of sensor size - width.
+ * @param {*} focalLength = The user input value of focal length.
+ */
+function calcHFOV(sensorPitch, sensorSizetWidth, focalLength) {
     hfov = 2 * Math.atan((sensorPitch * sensorSizetWidth) / (2 * 1000 * focalLength)) * 180 / Math.PI;
     return hfov;
 }
 
-function calculateVFOV(hfov, sensorSizetHeight, sensorSizetWidth) {
+/**
+ * Method that returns the calculated value of vfov.
+ * @param {*} hfov = The user input value of hfov.
+ * @param {*} sensorSizetHeight = The user input value of sensor size - height.
+ * @param {*} sensorSizetWidth = The user input value of sensor size - width.
+ */
+function calcVFOV(hfov, sensorSizetHeight, sensorSizetWidth) {
     vfov = hfov * (sensorSizetHeight / sensorSizetWidth);
     return vfov;
 }
 
-function calculateIFOV(sensorPitch, focalLength) {
+/**
+ * Method that returns the calculated value of ifov.
+ * @param {*} sensorPitch  = The user input value of sensor pitch.
+ * @param {*} focalLength  = The user input value of focal length.
+ */
+function calcIFOV(sensorPitch, focalLength) {
     ifov = sensorPitch / (focalLength * 1000);
     return ifov;
+}
+
+/**
+ * Method that returns the calculated value of focal length
+ * @param {number} sensorPitch = The user input value of sensor pitch.
+ * @param {number} sensorSizetWidth = The user input value of sensor size - width.
+ * @param {number} hfov  = The user input value of hfov.
+ */
+function calcFocalLength(sensorPitch, sensorSizetWidth, hfov) {
+    focalLength = (sensorPitch * sensorSizetWidth) / (2 * 1000 * Math.tan((Math.PI * hfov) / 360));
+    return focalLength;
+}
+
+
+//------------------------------------- Calculate DRI -------------------------------------
+
+/**
+ * Helper method that calculates the value of target detection/recognition/identify.
+ * @param {number} sensorPitch = The user input value of sensor pitch.
+ * @param {number} focalLength = The user input value of focal length.
+ * @param {number} targetSize = The value of the target size (height & width).
+ * @param {number} line = The value of the line pair.
+ * @return = the calculated value for target detection/recognition/identify (DRI)
+ */
+function calcTarget(sensorPitch, focalLength, targetSizeHeight, targetSizeWidth, line) {
+    target = (focalLength / (line * sensorPitch / 1000000)) * (Math.sqrt(targetSizeHeight * targetSizeWidth) / 1000);
+    return target;
+}
+
+/**
+ * Method that returns the calculated value of target detection, by using the helper method calcTarget.
+ * @param {number} targetSizeHeight = The value of the target size height.
+ * @param {number} targetSizeWidth = The value of the target size width.
+ * @return = The value of target detection.
+ */
+function calcDetection(sensorPitch, focalLength, targetSizeHeight, targetSizeWidth) {
+    // Calculate detection for object target
+    if (targetSizeHeight <= 0.5) {
+        detection = calcTarget(sensorPitch, focalLength, targetSizeHeight, targetSizeWidth, LinePair.getLpDetObj()); //!! USE LP FROM SETTINGS - DET OBJ
+    }
+
+    // Calculate detection for nato/human targets
+    else {
+        detection = calcTarget(sensorPitch, focalLength, targetSizeHeight, targetSizeWidth, LinePair.getLpDet()); //!! USE LP FROM SETTINGS - DET OBJ
+    }
+
+    return detection;
+}
+
+/**
+ * Method that returns the calculated value of target recognition, by using the helper method calcTarget.
+ * @param {number} targetSizeHeight = The value of the target size height.
+ * @param {number} targetSizeWidth = The value of the target size width.
+ * @return = The value of target recognition.
+ */
+function calcRecognition(sensorPitch, focalLength, targetSizeHeight, targetSizeWidth) {
+    recognition = calcTarget(sensorPitch, focalLength, targetSizeHeight, targetSizeWidth, LinePair.getLpRec()); //!! USE LP FROM SETTINGS - DET OBJ
+    return recognition;
+}
+
+/**
+ * Method that returns the calculated value of target identify, by using the helper method calcTarget.
+ * @param {number} targetSizeHeight = The value of the target size height.
+ * @param {number} targetSizeWidth = The value of the target size width.
+ * @return = The value of target identify.
+ */
+function calcIdent(sensorPitch, focalLength, targetSizeHeight, targetSizeWidth) {
+
+    // Calculate identify for object target
+    if (targetSizeHeight <= 0.5) {
+        identify = 0;
+    }
+
+    // Calculate identify for nato/human targets
+    else {
+        identify = calcTarget(sensorPitch, focalLength, targetSizeHeight, targetSizeWidth, LinePair.getLpIdent()); //!! USE LP FROM SETTINGS - DET OBJ
+    }
+
+    return identify;
 }

@@ -1,7 +1,7 @@
 /**
  * Clear current result, reset data
  */
-function resetData() {
+function resetHfovData() {
 
     // Get the parameter id and empty it out
     $('#outputHFOV').empty();
@@ -11,10 +11,10 @@ function resetData() {
 
 
 /**
- * Show fov result data from local server
+ * Show hfov results from local server
  */
 function getFovResultFromLocal() {
-    //resetData();
+    resetData();
 
     // Get the input-data from the client
     var focalLength = $("#inputFocalLength").val();
@@ -26,7 +26,7 @@ function getFovResultFromLocal() {
     $.ajax({
 
         // Get from the server the function 'listUsers' result.
-        url: "http://localhost:8080/fov?focalLength=" + focalLength + "&sensorPitch=" + sensorPitch +
+        url: "http://localhost:8080/calcHfov?focalLength=" + focalLength + "&sensorPitch=" + sensorPitch +
             "&sensorSizetWidth=" + sensorSizetWidth + "&sensorSizetHeight=" + sensorSizetHeight,
         type: "GET",
 
