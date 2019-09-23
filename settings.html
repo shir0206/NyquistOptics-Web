@@ -3,528 +3,89 @@
 
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>DRI Calculator</title>
+    <title>Settings</title>
     <link rel="stylesheet" type="text/css" href="css.css">
-  <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="script.js"></script>
-    <script src="calculateFOV.js"></script>
-  
-
 </head>
 
 <body>
 
-    <div class="tabContainer">
-        <div class="buttonContainer">
-            <button onclick="showPanel(this, 0)" style="">Calculate HFOV</button>
-            <button onclick="showPanel(this, 1)" style="">Calculate Focal Length</button>
-            <button onclick="showPanel(this, 2)" style="">Settings</button>
-        </div>
+    <div id="settings" class="tabContainer">
 
-        <div class="tabPanel" style="display: none;">
+        <form name="settingsForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
 
+            <!--linePairs------------------------------------------------------------------------>
 
-            <!--CalculationHFOV------------------------------------------------------------------------>
+            <div id="linePairs" class="infoContainer">
+                <div id="linePairsTitle" class="infoTitle">
+                    <img id="imgLinePairs" src="img\linePairs.svg" alt="Line Pairs">
+                    <label id="labelObjectTarget">Line Pairs</label>
+                </div>
 
-
-            <div id="calculateHFOV" class="dataContainer">
-
-                <button id="calcHFOVTab" onclick="calcHFOVTab()" class="calc"></button>
-
-                <form name="calculateHFOVForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
-
-                    <!--inputParametersForCalculationHFOV------------------------------------------------------------------------>
-
-                    <div id="inputParameters" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgCalculateHFOV" src="img\inputParameters.svg" alt="calculate HFOV">
-                            <label id="labelCalculateHFOV">Calculate HFOV & DRI</label>
-                        </div>
-
-                        <div class="parameterContainer">
-
-                            <div id="focalLength" class="parameterLine">
-                                <img id="iconFocalLength" src="img\focalLength.svg" alt="Focal Length">
-                                <label id="labelFocalLength" for="inputFocalLength">Focal Length (mm):</label>
-                                <input id="inputFocalLength" name="valueFocalLength" type="number" value="">
-                            </div>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="sensorPitch" class="parameterLine">
-                                <img id="iconSensorPitch" src="img\sensorPitch.svg" alt="Sensor Pitch">
-                                <label id="labelSensorPitch" for="inputSensorPitch">Sensor Pitch (mic):</label>
-                                <input id="inputSensorPitch" type="number" value="17">
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="sensorSize" class="parameterLine">
-                                <img id="iconSensorSize" src="img\sensorSize.svg" alt="Sensor Size">
-                                <label id="labelSensorSize" for="inputSensorSize">Sensor Size (px):</label>
-                                <input id="inputSensorSizeW" placeholder="Width" type="number" value="640">
-                                <label id="labelSensorSizeX" for="inputSensorSize"> x </label>
-                                <input id="inputSensorSizeH" placeholder="Height" type="number" value="480">
-                            </div>
-                        </div>
+                <div id="detectionLinePairs" class="parameterContainer">
+                    <div class="fullBlurContainer">
+                        <img id="iconDetectionLinePairs" src="img\linePairs.svg" alt="Line Pairs for Detection">
                     </div>
-                    <!-- </div> -->
+                    <label id="labelDetectionLinePairs" for="inputDetectionLinePairs">Line Pairs for Detection: </label>
+                    <input id="inputDetectionLinePairs" type="number" value="2">
+                </div>
 
-                    <!--fov------------------------------------------------------------------------>
-
-                    <div id="fov" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgFOV" src="img\FOV.svg" alt="Field of View">
-                            <label id="labelFOV">Field of View</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="HFOV" class="parameterLine">
-                                <img id="iconHFOV" src="img\HFOV.svg" alt="HFOV">
-                                <label id="labelHFOV" for="inputHFOV">HFOV: </label>
-                                <output id="outputHFOV" name="outputParameter">1234</output>
-
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="VFOV" class="parameterLine">
-                                <img id="iconVFOV" src="img\VFOV.svg" alt="VFOV">
-                                <label id="labelVFOV" for="inputVFOV">VFOV: </label>
-                                <output id="outputVFOV">1234</output>
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="IFOV" class="parameterLine">
-                                <img id="iconIFOV" src="img\IFOV.svg" alt="IFOV">
-                                <label id="labelIFOV" for="inputIFOV">IFOV: </label>
-                                <output id="outputIFOV">1234</output>
-                            </div>
-                        </div>
+                <div id="RecognitionLinePairs" class="parameterContainer">
+                    <div class="halfBlurContainer">
+                        <img id="iconRecognitionLinePairs" src="img\linePairs.svg" alt="Line Pairs for Recognition">
                     </div>
+                    <label id="labelRecognitionLinePairs" for="inputRecognitionLinePairs">Line Pairs for Recognition: </label>
+                    <input id="inputRecognitionLinePairs" type="number" value="6">
+                </div>
 
+                <div id="IdentificationLinePairs" class="parameterContainer">
+                    <img id="iconIdentificationLinePairs" src="img\linePairs.svg" alt="Line Pairs for Identification">
+                    <label id="labelIdentificationLinePairs" for="inputIdentificationLinePairs">Line Pairs for Identification: </label>
+                    <input id="inputIdentificationLinePairs" type="number" value="10">
+                </div>
 
-
-
-                    <!--natoTarget------------------------------------------------------------------------->
-
-                    <div id="natoTarget" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgNatoTarget" src="img\nato.svg" alt="Nato Target">
-                            <label id="labelNatoTarget">NatoTarget</label>
-                            <label id="labelNatoTargetSize">(0.0 x 0.0)</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="natoDetection" class="parameterLine">
-                                <div class="fullBlurContainer">
-                                    <img id="iconNatoDetection" src="img\nato.svg" alt="Nato Detection">
-                                </div>
-                                <label id="labelNatoDetection" for="inputDetection">Detection: </label>
-                                <output id="inputNatoDetection" name="outputParameter">1234</output>
-
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="natoRecognition" class="parameterLine">
-                                <div class="halfBlurContainer">
-                                    <img id="iconNatoRecognition" src="img\nato.svg" alt="Nato Recognition">
-                                </div>
-                                <label id="labelNatoRecognition" for="inputRecognition">Recognition: </label>
-                                <output id="inputNatoRecognition">1234</output>
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="natoIdentification" class="parameterLine">
-                                <img id="iconNatoIdentification" src="img\nato.svg" alt="Nato Identification">
-                                <label id="labeNatolIdentification" for="inputNatoIdentification">Identification: </label>
-                                <output id="inputNatoIdentification">1234</output>
-                            </div>
-                        </div>
+                <div id="detectionObjectLinePairs" class="parameterContainer">
+                    <div class="fullBlurContainer">
+                        <img id="icondetectionObjectLinePairs" src="img\linePairs.svg" alt="Line Pairs for detectionObject">
                     </div>
-
-                    <!--humanTarget------------------------------------------------------------------------>
-
-                    <div id="humanTarget" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgHumanTarget" src="img\human.svg" alt="Human Target">
-                            <label id="labelHumanTarget">HumanTarget</label>
-                            <label id="labelHumanTargetSize">(0.0 x 0.0)</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="HumanDetection" class="parameterLine">
-                                <div class="fullBlurContainer">
-                                    <img id="iconHumanDetection" src="img\human.svg" alt="Human Detection">
-                                </div>
-                                <label id="labelHumanDetection" for="inputDetection">Detection: </label>
-                                <output id="inputHumanDetection" name="outputParameter">1234</output>
-
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="HumanRecognition" class="parameterLine">
-                                <div class="halfBlurContainer">
-                                    <img id="iconHumanRecognition" src="img\human.svg" alt="Human Recognition">
-                                </div>
-
-                                <label id="labelHumanRecognition" for="inputRecognition">Recognition: </label>
-                                <output id="inputHumanRecognition">1234</output>
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="HumanIdentification" class="parameterLine">
-                                <img id="iconHumanIdentification" src="img\human.svg" alt="Human Identification">
-                                <label id="labeHumanlIdentification" for="inputHumanIdentification">Identification: </label>
-                                <output id="inputHumanIdentification">1234</output>
-                            </div>
-                        </div>
-                    </div>
-                    <!--objectTarget------------------------------------------------------------------------>
-
-                    <div id="objectTarget" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgObjectTarget" src="img\object.svg" alt="Object Target">
-                            <label id="labelObjectTarget">ObjectTarget</label>
-                            <label id="labelObjectTargetSize">(0.0 x 0.0)</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="ObjectDetection" class="parameterLine">
-                                <div class="fullBlurContainer">
-                                    <img id="iconObjectDetection" src="img\object.svg" alt="Object Detection">
-                                </div>
-                                <label id="labelObjectDetection" for="inputDetection">Detection: </label>
-                                <output id="inputObjectDetection" name="outputParameter">1234</output>
-
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="ObjectRecognition" class="parameterLine">
-                                <div class="halfBlurContainer">
-                                    <img id="iconObjectRecognition" src="img\object.svg" alt="Object Recognition">
-                                </div> <label id="labelObjectRecognition" for="inputRecognition">Recognition: </label>
-                                <output id="inputObjectRecognition">1234</output>
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="ObjectIdentification" class="parameterLine">
-                                <img id="iconObjectIdentification" src="img\object.svg" alt="Object Identification">
-                                <label id="labeObjectlIdentification" for="inputObjectIdentification">Identification: </label>
-                                <output id="inputObjectIdentification">1234</output>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-        <div class="tabPanel" style="display: none;">
-
-
-
-            <!--CalculationFocalLength------------------------------------------------------------------------>
-
-
-            <div id="calculateFocalLength" class="dataContainer">
-
-                <button id="calcFocalLengthTab" onclick="calcFocalLength()" class="calc"></button>
-
-                <form name="calculateFocalLengthForm">
-
-                    <!--inputParametersForFocalLength------------------------------------------------------------------------>
-
-                    <div id="inputParameters" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgCalculateFocalLength" src="img\inputParameters.svg" alt="calculate Focal Length">
-                            <label id="labelCalculateFocalLength">Calculate Focal Length & DRI</label>
-                        </div>
-
-                        <div class="parameterContainer">
-
-                            <div id="HFOV" class="parameterLine">
-                                <img id="iconHFOV" src="img\HFOV.svg" alt="HFOV">
-                                <label id="labelHFOV" for="HFOV">HFOV:</label>
-                                <input id="inputHFOV" type="number" value="">
-                            </div>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="sensorPitch" class="parameterLine">
-                                <img id="iconSensorPitch" src="img\sensorPitch.svg" alt="Sensor Pitch">
-                                <label id="labelSensorPitch" for="inputSensorPitch">Sensor Pitch (mic):</label>
-                                <input id="inputSensorPitch" type="number" value="17">
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="sensorSize" class="parameterLine">
-                                <img id="iconSensorSize" src="img\sensorSize.svg" alt="Sensor Size">
-                                <label id="labelSensorSize" for="inputSensorSize">Sensor Size (px):</label>
-                                <input id="inputSensorSizeW" placeholder="Width" type="number" value="640">
-                                <label id="labelSensorSizeX" for="inputSensorSize"> x </label>
-                                <input id="inputSensorSizeH" placeholder="Height" type="number" value="480">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--fov------------------------------------------------------------------------>
-
-                    <div id="fov" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgFOV" src="img\FOV.svg" alt="Field of View">
-                            <label id="labelFOV">Field of View</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="focalLength" class="parameterLine">
-                                <img id="iconFocalLength" src="img\focalLength.svg" alt="Focal Length">
-                                <label id="labelFocalLength" for="inputFocalLength">FocalLength: </label>
-                                <output id="inputFocalLength" name="outputParameter">1234</output>
-
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="VFOV" class="parameterLine">
-                                <img id="iconVFOV" src="img\VFOV.svg" alt="VFOV">
-                                <label id="labelVFOV" for="inputVFOV">VFOV: </label>
-                                <output id="inputVFOV">1234</output>
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="IFOV" class="parameterLine">
-                                <img id="iconIFOV" src="img\IFOV.svg" alt="IFOV">
-                                <label id="labelIFOV" for="inputIFOV">IFOV: </label>
-                                <output id="inputIFOV">1234</output>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--natoTarget------------------------------------------------------------------------->
-
-                    <div id="natoTarget" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgNatoTarget" src="img\nato.svg" alt="Nato Target">
-                            <label id="labelNatoTarget">NatoTarget</label>
-                            <label id="labelNatoTargetSize">(0.0 x 0.0)</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="natoDetection" class="parameterLine">
-                                <div class="fullBlurContainer">
-
-                                    <img id="iconNatoDetection" src="img\nato.svg" alt="Nato Detection">
-                                </div>
-                                <label id="labelNatoDetection" for="inputDetection">Detection: </label>
-                                <output id="inputNatoDetection" name="outputParameter">1234</output>
-
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="natoRecognition" class="parameterLine">
-                                <div class="halfBlurContainer">
-                                    <img id="iconNatoRecognition" src="img\nato.svg" alt="Nato Recognition">
-                                </div>
-
-                                <label id="labelNatoRecognition" for="inputRecognition">Recognition: </label>
-                                <output id="inputNatoRecognition">1234</output>
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="natoIdentification" class="parameterLine">
-                                <img id="iconNatoIdentification" src="img\nato.svg" alt="Nato Identification">
-                                <label id="labeNatolIdentification" for="inputNatoIdentification">Identification: </label>
-                                <output id="inputNatoIdentification">1234</output>
-                            </div>
-                        </div>
-                    </div>
-                    <!--humanTarget------------------------------------------------------------------------>
-
-                    <div id="humanTarget" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgHumanTarget" src="img\human.svg" alt="Human Target">
-                            <label id="labelHumanTarget">HumanTarget</label>
-                            <label id="labelHumanTargetSize">(0.0 x 0.0)</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="HumanDetection" class="parameterLine">
-                                <div class="fullBlurContainer">
-
-                                    <img id="iconHumanDetection" src="img\human.svg" alt="Human Detection">
-                                </div> <label id="labelHumanDetection" for="inputDetection">Detection: </label>
-                                <output id="inputHumanDetection" name="outputParameter">1234</output>
-
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="HumanRecognition" class="parameterLine">
-                                <div class="halfBlurContainer">
-                                    <img id="iconHumanRecognition" src="img\human.svg" alt="Human Recognition">
-                                </div>
-                                <label id="labelHumanRecognition" for="inputRecognition">Recognition: </label>
-                                <output id="inputHumanRecognition">1234</output>
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="HumanIdentification" class="parameterLine">
-                                <img id="iconHumanIdentification" src="img\human.svg" alt="Human Identification">
-                                <label id="labeHumanlIdentification" for="inputHumanIdentification">Identification: </label>
-                                <output id="inputHumanIdentification">1234</output>
-                            </div>
-                        </div>
-                    </div>
-                    <!--objectTarget------------------------------------------------------------------------>
-
-                    <div id="objectTarget" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgObjectTarget" src="img\object.svg" alt="Object Target">
-                            <label id="labelObjectTarget">ObjectTarget</label>
-                            <label id="labelObjectTargetSize">(0.0 x 0.0)</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="ObjectDetection" class="parameterLine">
-                                <div class="fullBlurContainer">
-
-                                    <img id="iconObjectDetection" src="img\object.svg" alt="Object Detection">
-                                </div> <label id="labelObjectDetection" for="inputDetection">Detection: </label>
-                                <output id="inputObjectDetection" name="outputParameter">1234</output>
-
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="ObjectRecognition" class="parameterLine">
-                                <div class="halfBlurContainer">
-                                    <img id="iconObjectRecognition" src="img\object.svg" alt="Object Recognition">
-                                </div>
-                                <label id="labelObjectRecognition" for="inputRecognition">Recognition: </label>
-                                <output id="inputObjectRecognition">1234</output>
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="ObjectIdentification" class="parameterLine">
-                                <img id="iconObjectIdentification" src="img\object.svg" alt="Object Identification">
-                                <label id="labeObjectlIdentification" for="inputObjectIdentification">Identification: </label>
-                                <output id="inputObjectIdentification">1234</output>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="tabPanel" style="display: none;">
-
-            <!--Settigs------------------------------------------------------------------------>
-
-            <div id="settings" class="dataContainer">
-
-                <button id="save" onclick="saveSettings()" class="save"></button>
-
-                <form>
-
-                    <!--Line Pairs------------------------------------------------------------------------>
-
-
-                    <div id="LinePairs" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgLinePairs" src="img\linePairs.svg" alt="Line Pairs">
-                            <label id="labelObjectTarget">Line Pairs</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="DetectionLinePairs" class="parameterLine">
-                                <div class="fullBlurContainer">
-                                    <img id="iconDetectionLinePairs" src="img\linePairs.svg" alt="Line Pairs for Detection">
-                                </div>
-                                <label id="labelDetectionLinePairs" for="inputDetectionLinePairs">Line Pairs for Detection: </label>
-                                <input id="inputDetectionLinePairs" type="number" value="2">
-                            </div>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="RecognitionLinePairs" class="parameterLine">
-                                <div class="halfBlurContainer">
-                                    <img id="iconRecognitionLinePairs" src="img\linePairs.svg" alt="Line Pairs for Recognition">
-                                </div>
-                                <label id="labelRecognitionLinePairs" for="inputRecognitionLinePairs">Line Pairs for Recognition: </label>
-                                <input id="inputRecognitionLinePairs" type="number" value="6">
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id=" IdentificationLinePairs" class="parameterLine">
-                                <img id="icon IdentificationLinePairs" src="img\linePairs.svg" alt="Line Pairs for Identification">
-                                <label id="labelIdentificationLinePairs" for="inputObjectLinePairs">Line Pairs for Identification: </label>
-                                <input id="inputIdentificationLinePairs" type="number" value="10">
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="DetectionObjectLinePairs" class="parameterLine">
-                                <div class="fullBlurContainer">
-                                    <img id="iconDetectionObjectLinePairs" src="img\linePairs.svg" alt="Line Pairs for Detection Object">
-                                </div>
-                                <label id="labelDetectionObjectLinePairs" for="inputDetectionObjectLinePairs">Line Pairs for Detection Object: </label>
-                                <input id="inputDetectionObjectLinePairs" type="number" value="1.2">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Target Size------------------------------------------------------------------------>
-
-                    <div id="targetSize" class="infoContainer">
-                        <div class="infoTitle">
-                            <img id="imgTargetSize" src="img\targetSize.svg" alt="Target Size">
-                            <label id="labelObjectTarget">Target Size</label>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="natoTargetSize" class="parameterLine">
-                                <img id="iconNatoTargetSize" src="img\nato.svg" alt="Nato Target">
-                                <label id="labelNatoTargetSize" for="inputNatoTargetSize">Nato Target: </label>
-                                <input id="inputNatoTargetSizeW" placeholder="Width" type="number" value="2.3">
-                                <label id="labelNatoTargetSizeX" for="inputNatoTargetSize"> x </label>
-                                <input id="inputNatoTargetSizeH" placeholder="Height" type="number" value="2.3">
-                            </div>
-                        </div>
-                        <div class="parameterContainer">
-                            <div id="HumanTargetSize" class="parameterLine">
-                                <img id="iconHumanTargetSize" src="img\human.svg" alt="Human Target">
-                                <label id="labelHumanTargetSize" for="inputHumanTargetSize">Human Target: </label>
-                                <input id="inputHumanTargetSizeW" placeholder="Width" type="number" value="0.5">
-                                <label id="labelHumanTargetSizeX" for="inputHumanTargetSize"> x </label>
-                                <input id="inputHumanTargetSizeH" placeholder="Height" type="number" value="1.7">
-                            </div>
-                        </div>
-
-                        <div class="parameterContainer">
-                            <div id="ObjectTargetSize" class="parameterLine">
-                                <img id="iconObjectTargetSize" src="img\object.svg" alt="Object Target">
-                                <label id="labelObjectTargetSize" for="inputObjectTargetSize">Object Target: </label>
-                                <input id="inputObjectTargetSizeW" placeholder="Width" type="number" value="0.5">
-                                <label id="labelObjectTargetSizeX" for="inputObjectTargetSize"> x </label>
-                                <input id="inputObjectTargetSizeH" placeholder="Height" type="number" value="0.5">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <hr>
-                <p>You can make a shortcut by dragging this icon to your desktop or bookmark bar: </p>
-                <div id="icon">
-                    <a href="https://shir0206.github.io/NyquistOptics-Web/">
-                        <div id="iconContainer"></div>
-                        <div id="title">NyquistOptics</div>
-                    </a>
+                    <label id="labeldetectionObjectLinePairs" for="inputdetectionObjectLinePairs">Line Pairs for detection object: </label>
+                    <input id="inputdetectionObjectLinePairs" type="number" value="1.2">
                 </div>
             </div>
-        </div>
-    </div>
 
+            <!--TargetSize------------------------------------------------------------------------>
+
+            <div id="targetSize" class="infoContainer">
+                <div id="targetSizeTitle" class="infoTitle">
+                    <img id="img_targetSize" src="img\targetSize.svg" alt="Target Size">
+                    <label id="label_targetSize">Target Size</label>
+                </div>
+
+                <div id="natoTargetSize" class="parameterContainer">
+                    <img id="img_natoTargetSize" src="img\nato.svg" alt="Nato Target Size">
+                    <label id="label_natoTargetSize">Nato Target Size (m):</label>
+                    <input id="input_natoTargetSizeW" placeholder="Width" type="number" value="2.3">
+                    <label id="label_natoTargetSizeX"> x </label>
+                    <input id="input_natoTargetSizeH" placeholder="Height" type="number" value="2.3">
+                </div>
+
+                <div id="humanTargetSize" class="parameterContainer">
+                    <img id="img_humanTargetSize" src="img\human.svg" alt="Nato Target Size">
+                    <label id="label_humanTargetSize">Human Target Size (m):</label>
+                    <input id="input_humanTargetSizeW" placeholder="Width" type="number" value="0.5">
+                    <label id="label_humanTargetSizeX"> x </label>
+                    <input id="input_humanTargetSizeH" placeholder="Height" type="number" value="1.7">
+                </div>
+
+                <div id="objectTargetSize" class="parameterContainer">
+                    <img id="img_objectTargetSize" src="img\object.svg" alt="Nato Target Size">
+                    <label id="label_objectTargetSize">Object Target Size (m):</label>
+                    <input id="input_objectTargetSizeW" placeholder="Width" type="number" value="0.5">
+                    <label id="label_objectTargetSizeX"> x </label>
+                    <input id="input_objectTargetSizeH" placeholder="Height" type="number" value="0.5">
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
