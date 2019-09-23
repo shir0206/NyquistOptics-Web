@@ -7,22 +7,6 @@ body {
     text-align: center;
 }
 
-.tabContainer {
-    width: 100%;
-    height: 350px;
-    font-size: 1em;
-    height: 100%;
-    width: 100%;
-    padding: 8px;
-    text-align: center;
-    background: #ffffff;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    grid-template-columns: auto-fit, minmax(60px, 1fr);
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 10px;
-}
-
 .tabContainer .buttonContainer {
     height: 15%;
 }
@@ -255,12 +239,11 @@ label {
     width: 100%;
     height: 100%;
     flex-direction: column;
-    background-color: blue;
     overflow: hidden;
 }
 
 .tabNav {
-    background-color: lime;
+    margin: 5px;
 }
 
 .tabContainer {
@@ -276,4 +259,22 @@ html {
     height: 100%;
     margin: 0;
     padding: 0
+}
+
+#ref_calculateHFOV,
+#ref_calculateFocalLength,
+#ref_settings {
+    height: 15%;
+    width: 33.33%;
+    height: 100%;
+    float: left;
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: 1em;
+    background-color: #aac0e8;
+    height: 85%;
+    color: black;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: bold;
 }
