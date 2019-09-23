@@ -75,7 +75,37 @@ app.get('/calcFocalLength', function(req, res) {
 
 //------------------------------------- Calculate DRI -------------------------------------
 
+/**
+ * Calculate in the server focal length results map
+ */
+app.get('/calcFocalLength', function(req, res) {
 
+    // Recieve parameters from the query
+    var hfov = req.query.hfov;
+    var sensorPitch = req.query.sensorPitch;
+    var sensorSizetWidth = req.query.sensorSizetWidth;
+    var sensorSizetHeight = req.query.sensorSizetHeight;
+
+    // Calculate focal length
+    focalLength = calcFocalLength(parseInt(sensorPitch), parseInt(sensorSizetWidth), parseInt(hfov))
+
+    // Calculate VFOV
+    vfov = calcVFOV(hfov, parseInt(sensorSizetHeight), parseInt(sensorSizetWidth))
+
+    // Calculate IFOV
+    ifov = calcIFOV(parseInt(sensorPitch), parseInt(focalLength))
+
+    // Create map result
+    var fovMap = new Map();
+    fovMap.set("focalLength", focalLength);
+    fovMap.set("vfov", vfov);
+    fovMap.set("ifov", ifov);
+
+    // Return result
+    console.log(fovMap);
+    res.end(String(fovMap));
+
+})
 
 
 

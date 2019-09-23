@@ -1,4 +1,4 @@
-var tabButtons = document.querySelectorAll(".tabContainer .buttonContainer button");
+var tabButtons = $(".tabContainer .buttonContainer button");
 var tabPanels = document.querySelectorAll(".tabContainer .tabPanel");
 
 var calculateHFOV = document.querySelectorAll(".tabContainer .tabPanel button");;
@@ -33,6 +33,12 @@ let objectTargetW = 0.5;
 let objectTargetH = 0.5;
 
 function showPanel(currentButton, panelIndex) {
+	
+	$.get('http://localhost:3030/calcHfov',
+    function(returnedData){
+         console.log(returnedData);
+});
+	
     if (lastButton) {
         lastButton.style.backgroundColor = "";
         lastButton.style.color = "";

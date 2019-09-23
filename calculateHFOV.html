@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculate HFOV</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <script src="calculateFOV.js"></script>
+</head>
+
+<body>
+
+    <div id="calculateHFOV" class="tabContainer">
+
+        <button id="btn_calcHFOV" onclick="calcHFOV()" class="calc"></button>
+
+        <form name="calculateHFOVForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+
+            <!--inputParametersForCalculationHFOV------------------------------------------------------------------------>
+
+            <div id="parameters" class="infoContainer">
+                <div id="parametersTitle" class="infoTitle">
+                    <img id="img_CalculateHFOV" src="img\inputParameters.svg" alt="calculate HFOV">
+                    <label id="label_CalculateHFOV">Calculate HFOV & DRI</label>
+                </div>
+
+                <div id="focalLength" class="parameterContainer">
+                    <img id="img_FocalLength" src="img\focalLength.svg" alt="Focal Length">
+                    <label id="label_FocalLength" for="inputFocalLength">Focal Length (mm):</label>
+                    <input id="input_FocalLength" name="valueFocalLength" type="number" value="">
+                </div>
+
+                <div id="sensorPitch" class="parameterContainer">
+                    <img id="img_SensorPitch" src="img\sensorPitch.svg" alt="Sensor Pitch">
+                    <label id="label_SensorPitch" for="inputSensorPitch">Sensor Pitch (mic):</label>
+                    <input id="input_SensorPitch" type="number" value="17">
+                </div>
+
+                <div id="sensorSize" class="parameterContainer">
+                    <img id="img_SensorSize" src="img\sensorSize.svg" alt="Sensor Size">
+                    <label id="label_SensorSize" for="inputSensorSize">Sensor Size (px):</label>
+                    <input id="input_SensorSizeW" placeholder="Width" type="number" value="640">
+                    <label id="label_SensorSizeX" for="inputSensorSize"> x </label>
+                    <input id="input_SensorSizeH" placeholder="Height" type="number" value="480">
+                </div>
+            </div>
+
+            <!--fov------------------------------------------------------------------------>
+
+            <div id="fov" class="infoContainer">
+                <div id="fovTitle" class="infoTitle">
+                    <img id="img_FOV" src="img\FOV.svg" alt="Field of View">
+                    <label id="label_FOV">Field of View</label>
+                </div>
+
+                <div id="HFOV" class="parameterContainer">
+                    <img id="img_HFOV" src="img\HFOV.svg" alt="HFOV">
+                    <label id="label_HFOV" for="inputHFOV">HFOV: </label>
+                    <output id="outputHFOV" name="outputParameter">1234</output>
+
+                </div>
+
+                <div id="VFOV" class="parameterContainer">
+                    <img id="img_VFOV" src="img\VFOV.svg" alt="VFOV">
+                    <label id="label_VFOV" for="inputVFOV">VFOV: </label>
+                    <output id="outputVFOV">1234</output>
+                </div>
+
+                <div id="IFOV" class="parameterContainer">
+                    <img id="img_IFOV" src="img\IFOV.svg" alt="IFOV">
+                    <label id="label_IFOV" for="inputIFOV">IFOV: </label>
+                    <output id="outputIFOV">1234</output>
+                </div>
+            </div>
+
+            <!--natoTarget------------------------------------------------------------------------->
+
+            <div id="natoTarget" class="infoContainer">
+                <div id="natoTargetTitle" class="infoTitle">
+                    <img id="img_NatoTarget" src="img\nato.svg" alt="Nato Target">
+                    <label id="label_NatoTarget">NatoTarget</label>
+                    <label id="label_NatoTargetSize">(0.0 x 0.0)</label>
+                </div>
+
+                <div id="natoDetection" class="parameterContainer">
+                    <div class="fullBlurContainer">
+                        <img id="img_NatoDetection" src="img\nato.svg" alt="Nato Detection">
+                    </div>
+                    <label id="label_NatoDetection" for="inputDetection">Detection: </label>
+                    <output id="output_NatoDetection" name="outputParameter">1234</output>
+                </div>
+
+                <div id="natoRecognition" class="parameterContainer">
+                    <div class="halfBlurContainer">
+                        <img id="img_NatoRecognition" src="img\nato.svg" alt="Nato Recognition">
+                    </div>
+                    <label id="label_NatoRecognition" for="inputRecognition">Recognition: </label>
+                    <output id="output_NatoRecognition">1234</output>
+                </div>
+
+                <div id="natoIdentification" class="parameterContainer">
+                    <img id="img_NatoIdentification" src="img\nato.svg" alt="Nato Identification">
+                    <label id="labelNatolIdentification" for="inputNatoIdentification">Identification: </label>
+                    <output id="output_NatoIdentification">1234</output>
+                </div>
+            </div>
+
+            <!--humanTarget------------------------------------------------------------------------>
+
+            <div id="humanTarget" class="infoContainer">
+                <div id="humanTargetTitle" class="infoTitle">
+                    <img id="img_HumanTarget" src="img\human.svg" alt="Human Target">
+                    <label id="label_HumanTarget">HumanTarget</label>
+                    <label id="label_HumanTargetSize">(0.0 x 0.0)</label>
+                </div>
+
+                <div id="HumanDetection" class="parameterContainer">
+                    <div class="fullBlurContainer">
+                        <img id="img_HumanDetection" src="img\human.svg" alt="Human Detection">
+                    </div>
+                    <label id="label_HumanDetection" for="inputDetection">Detection: </label>
+                    <output id="output_HumanDetection" name="outputParameter">1234</output>
+                </div>
+
+                <div id="HumanRecognition" class="parameterContainer">
+                    <div class="halfBlurContainer">
+                        <img id="img_HumanRecognition" src="img\human.svg" alt="Human Recognition">
+                    </div>
+                    <label id="label_HumanRecognition" for="inputRecognition">Recognition: </label>
+                    <output id="output_HumanRecognition">1234</output>
+                </div>
+
+                <div id="HumanIdentification" class="parameterContainer">
+                    <img id="img_HumanIdentification" src="img\human.svg" alt="Human Identification">
+                    <label id="label_HumanlIdentification" for="inputHumanIdentification">Identification: </label>
+                    <output id="output_HumanIdentification">1234</output>
+                </div>
+            </div>
+
+            <!--objectTarget------------------------------------------------------------------------>
+
+            <div id="objectTarget" class="infoContainer">
+                <div id="objectTargetTitle" class="infoTitle">
+                    <img id="img_ObjectTarget" src="img\object.svg" alt="Object Target">
+                    <label id="label_ObjectTarget">ObjectTarget</label>
+                    <label id="label_ObjectTargetSize">(0.0 x 0.0)</label>
+                </div>
+
+                <div id="ObjectDetection" class="parameterContainer">
+                    <div class="fullBlurContainer">
+                        <img id="img_ObjectDetection" src="img\object.svg" alt="Object Detection">
+                    </div>
+                    <label id="label_ObjectDetection" for="inputDetection">Detection: </label>
+                    <output id="output_ObjectDetection" name="outputParameter">1234</output>
+                </div>
+
+                <div id="ObjectRecognition" class="parameterContainer">
+                    <div class="halfBlurContainer">
+                        <img id="img_ObjectRecognition" src="img\object.svg" alt="Object Recognition">
+                    </div> <label id="label_ObjectRecognition" for="inputRecognition">Recognition: </label>
+                    <output id="output_ObjectRecognition">1234</output>
+                </div>
+
+                <div id="ObjectIdentification" class="parameterContainer">
+                    <img id="img_ObjectIdentification" src="img\object.svg" alt="Object Identification">
+                    <label id="label_ObjectlIdentification" for="inputObjectIdentification">Identification: </label>
+                    <output id="output_ObjectIdentification">1234</output>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
