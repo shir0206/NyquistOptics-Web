@@ -242,10 +242,6 @@ label {
     overflow: hidden;
 }
 
-.tabNav {
-    margin: 5px;
-}
-
 .tabContainer {
     flex-grow: 1;
     border: none;
@@ -272,9 +268,9 @@ html {
     font-family: sans-serif;
     font-size: 1em;
     background-color: #aac0e8;
-    height: 85%;
     color: black;
     text-align: center;
     box-sizing: border-box;
     font-weight: bold;
+    /**/
 }
